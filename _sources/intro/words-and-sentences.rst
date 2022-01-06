@@ -99,5 +99,5 @@ apostrophe) appears in the string.
 
     ________ words have only one meeting in Python and cannot be used as variable names.
 
-    - :[Rr]eserved: Reserved words already have a meaning in Python that cannot be changed, like <b>print</b> or <b>for</b>.
+    - :[Rr]eserved: Reserved words already have a meaning in Python that cannot be changed, like **if** or **for**.
       :.*: Try again!
