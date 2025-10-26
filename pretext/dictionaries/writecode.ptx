@@ -409,20 +409,26 @@ with open("mbox-short.txt", "r") as filename:
     messages = filename.readlines()
     # Iterate through each message (each line)
     for message in messages:
-        # Assign the key to the first (0th) element of the message
-        key = message.split()[0]
-        # Assign the value to the second element of the message
-        value = message.split()[1]
-        # Check if key is already in dictionary
-        if key not in message_count.keys():
-            # if not, add key/value pair to dictionary
-            message_count[key] = value
+        # Make sure the message has at least 2 elements
+        if len(message.split()) > 2:
+            # Assign the key to the first (0th) element of the message
+            key = message.split()[0]
+            if key == "From":
+                # Assign the value to the second element of the message
+                value = message.split()[1]
+                # Check if key is already in dictionary
+                if key not in message_count.keys():
+                # if not, add key/value pair to dictionary
+                    message_count[value] = 1
+                else:
+                    # if so, increase count for that key by 1
+                    message_count[value] += 1
 # Create variable to count emails
 max_emails = 0
 # Iterate through keys in dictionary
 for key in message_count.keys():
-    # Check if key is larger than the max emails
-    if int(message_count[key]) &gt;= max_emails:
+    # Check if the value for that key is greater than or equal to max_emails
+    if int(message_count[key]) >= max_emails:
         # If so, reassign max_emails to that key
         max_emails = int(message_count[key])
 print(max_emails)
